@@ -7,11 +7,10 @@
  * # MainCtrl
  * Controller of the elementumMoviesApp
  */
-angular.module('elementumMoviesApp')
-  .controller('MainCtrl', function () {
+angular.module('elementumMoviesApp').controller('MainCtrl', ['$scope', function ($scope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+  }]);

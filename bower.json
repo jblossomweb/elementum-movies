@@ -1,10 +1,11 @@
 {
   "name": "elementum-movies",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "angular": "^1.4.0",
     "bootstrap": "^3.2.0",
-    "angular-route": "^1.4.0"
+    "angular-route": "^1.4.0",
+    "angular-bootstrap": "^2.1.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
@@ -15,9 +16,17 @@
     "bootstrap": {
       "main": [
         "less/bootstrap.less",
-        "dist/css/bootstrap.css",
-        "dist/js/bootstrap.js"
+        "dist/css/bootstrap.css"
       ]
+    },
+    "angular-bootstrap": {
+      "main": [
+        "ui-bootstrap.js",
+        "ui-bootstrap-tpls.js"
+      ]
+    },
+    "jquery": {
+      "main": []
     }
   }
 }
