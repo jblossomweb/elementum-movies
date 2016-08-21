@@ -12,6 +12,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -37,29 +38,23 @@
             </button>
 
             <a class="navbar-brand" href="#/">
-              <img src="images/elementum.svg" alt="Elementum" height="20">
+              <img src="images/elementum.png" alt="Elementum" height="20">
             </a>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-class="!navCollapsed && 'in'">
-
+<!--           <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-class="!navCollapsed && 'in'">
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
               <li><a ng-href="#/">Contact</a></li>
             </ul>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
 
     <div class="container-fluid">
       <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container-fluid">
-      </div>
     </div>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -73,6 +68,7 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/services/tmdb.js"></script>
     <script src="scripts/controllers/menu.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>

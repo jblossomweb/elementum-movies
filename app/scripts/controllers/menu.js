@@ -7,6 +7,6 @@
  * # MenuCtrl
  * Controller of the elementumMoviesApp
  */
-angular.module('elementumMoviesApp').controller('MenuCtrl', ['$scope', function ($scope) {
+angular.module('elementumMoviesApp').controller('MenuCtrl', [function () {
 
 }]);

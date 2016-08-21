@@ -7,7 +7,7 @@
 
 body {
   padding: 0;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -60,6 +60,15 @@ body {
   margin-top: 28px;
 }
 
+.navbar-default {
+  background-color: #111;
+  font-family: 'Montserrat', Helvetica, sans-serif;
+}
+
+.navbar-default a {
+  color:#ccc;
+}
+
 div.navbar-collapse.collapse {
   display: block;
   overflow: hidden;
@@ -72,6 +81,145 @@ div.navbar-collapse.collapse {
 div.navbar-collapse.collapse.in {
   max-height: 2000px;
 }
+
+
+/* Annotations */
+
+h1 {
+  font-family: Helvetica, sans-serif;
+  font-weight:bold;
+  text-transform: uppercase;
+  font-size:24px;
+  color:#1a9dba !important;
+  width:100%;
+  border-bottom:1px solid #eee;
+}
+
+h2 {
+  font-family: Helvetica, sans-serif;
+  font-weight:bold;
+  text-transform: uppercase;
+  font-size:14px;
+  color:#484949 !important;
+}
+
+p {
+  font-family: Helvetica, sans-serif;
+  font-weight:normal;
+  font-size:14px;
+  color:#484949 !important;
+  line-height: 18px;
+}
+
+.header,
+.navbar {
+  margin-bottom:0px !important;
+}
+
+.left-col {
+  background: #f6f6f6;
+  background: -moz-linear-gradient(left, #f6f6f6 91%, #f6f6f6 95%, #cbcbcb 100%);
+  background: -webkit-gradient(left top, right top, color-stop(91%, #f6f6f6), color-stop(95%, #f6f6f6), color-stop(100%, #cbcbcb));
+  background: -webkit-linear-gradient(left, #f6f6f6 91%, #f6f6f6 95%, #cbcbcb 100%);
+  background: -o-linear-gradient(left, #f6f6f6 91%, #f6f6f6 95%, #cbcbcb 100%);
+  background: -ms-linear-gradient(left, #f6f6f6 91%, #f6f6f6 95%, #cbcbcb 100%);
+  background: linear-gradient(to right, #f6f6f6 91%, #f6f6f6 95%, #cbcbcb 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6f6', endColorstr='#cbcbcb', GradientType=1 );
+}
+
+.left-col,
+.right-col {
+  padding:0px 64px;
+}
+
+.movie-thumb {
+  margin: 20px 0px;
+  cursor: pointer;
+}
+
+.movie-thumb.selected h2 {
+  color:#1a9dba !important;
+}
+
+.movie-thumb .circle-container {
+  margin:-10px auto;
+  height:140px;
+  width:140px;
+  border-radius: 50%;
+  border:9px solid transparent;
+  overflow: hidden;
+  cursor:pointer;
+}
+
+.movie-thumb.selected .circle-container {
+  border:9px solid #1a9dba;
+}
+
+.movie-thumb .circle-container img {
+  height:auto;
+  width:auto;
+  max-height: 150%;
+  max-width: 150%;
+  margin-top: -15%;
+}
+
+.movie-details img.poster {
+  width:174px;
+  height:262px;
+}
+
+.movie-details .row {
+  margin-bottom:64px;
+}
+
+.actor-thumb {
+  margin: 10px 0px;
+  cursor: pointer;
+  height:80px;
+}
+
+.actor-thumb.selected h2 {
+  color:#1a9dba !important;
+}
+
+.actor-thumb .circle-container {
+  margin:-10px auto;
+  height:70px;
+  width:70px;
+  border-radius: 50%;
+  border:4px solid transparent;
+  overflow: hidden;
+  cursor:pointer;
+  float:left;
+}
+
+.actor-thumb.selected .circle-container {
+  border:4px solid #1a9dba;
+}
+
+.actor-thumb .circle-container img {
+  height:auto;
+  width:auto;
+  max-height: 150%;
+  max-width: 150%;
+  margin-top: -15%;
+}
+
+.actor-thumb .text {
+  float:left;
+  clear:right;
+  padding-left:12px;
+}
+
+.actor-thumb .text h2,
+.actor-thumb .text p {
+  margin:0px;
+}
+
+.footer {
+  color:#ccc;
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

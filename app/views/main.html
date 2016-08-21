@@ -1,23 +1,79 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div class="row">
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+  <div class="col-xs-4 left-col">
+    <h1>Browse Movies</h1>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+    <div class="row">
+      <div class="col-xs-6 movie-thumb text-center" 
+        ng-repeat="movie in movies | orderBy : 'release_date'" 
+        ng-click="selectMovie(movie.id)" 
+        ng-class="movie.selected ? 'selected' : ''"
+      >
+        
+        <div class="circle-container text-center">
+          <img ng-src="{{imgBase}}{{movie.backdrop_path}}" />
+        </div>
+        
+        <h2 class="text-center" ng-bind="movie.title"></h2>
+        <p ng-bind="movie.director"></p>
+      </div>
+    </div>
+  </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+  <div class="col-xs-8 right-col">
+    <div class="movie-details" ng-if="movie">
+      
+      <h1 ng-bind="movie.title"></h1>
+
+      <div class="row">
+        <div class="col-xs-3">
+          <img class="poster" ng-src="{{imgBase}}{{movie.poster_path}}" alt="{{movie.title}}" />
+        </div>
+        <div class="col-xs-9">
+          <h2>Who made it?</h2>
+          <p>
+            <div ng-if="movie.director.length">
+              <b>Director:</b>&nbsp;{{movie.director}}
+            </div>
+            <div ng-if="movie.writers.length">
+              <b>Writers:</b>&nbsp;{{movie.writers}}
+            </div>
+            <div ng-if="movie.stars.length">
+              <b>Stars:</b>&nbsp;{{movie.stars}}
+            </div>
+          </p>
+          <br>
+          <h2>What's it about?</h2>
+          <p ng-bind="movie.overview">
+            
+          </p>
+        </div>
+      </div>
+
+      <h1>Movie Credits</h1>
+
+      <div class="row">
+        <div class="col-xs-5">
+          <div class="actor-thumb text-left" 
+            ng-repeat="actor in movie.cast"
+            ng-click="selectActor(actor.id)"
+            ng-class="actor.selected ? 'selected' : ''"
+          >
+            <div class="circle-container">
+              <img ng-src="{{imgBase}}{{actor.profile_path}}" ng-if="actor.profile_path" />
+            </div>
+            <div class="text">
+              <h2 ng-bind="actor.name"></h2>
+              <p ng-bind="actor.character"></p>
+            </div>
+          </div> 
+        </div>
+        <div class="col-xs-7">
+          <img ng-src="{{imgLargeBase}}{{actor.profile_path}}" ng-if="actor && actor.profile_path" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
