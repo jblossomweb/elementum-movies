@@ -14,8 +14,8 @@ angular.module('elementumMoviesApp').controller('CollectionCtrl', [
   'tmdbService',
   function ($scope, $filter, $routeParams, tmdbService) {
 
-    $scope.imgBase = 'https://image.tmdb.org/t/p/w150_and_h225_bestv2/';
-    $scope.imgLargeBase = 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/';
+    $scope.imgBase = 'https://image.tmdb.org/t/p/w150_and_h225_bestv2';
+    $scope.imgLargeBase = 'https://image.tmdb.org/t/p/w300_and_h450_bestv2';
     
     $scope.movies = [];
     $scope.movie = null;
