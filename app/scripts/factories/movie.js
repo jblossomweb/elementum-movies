@@ -8,9 +8,10 @@
  * Factory of the elementumMoviesApp
  */
 angular.module('elementumMoviesApp').factory('movieFactory', [
+  '$q',
   '$filter',
   'tmdbService', 
-  function ($filter, tmdbService) {
+  function ($q, $filter, tmdbService) {
 
     var Factory = {};
 
@@ -18,39 +19,47 @@ angular.module('elementumMoviesApp').factory('movieFactory', [
     Factory.imgLargeBase = 'https://image.tmdb.org/t/p/w300_and_h450_bestv2';
 
     var fillMovies = function($scope) {
-      angular.forEach($scope.movies, fillMovie);
+      var chain = $q.when();
+      angular.forEach($scope.movies, function(movie) {
+        chain = chain.then(function() {
+          fillMovie(movie);
+        });
+      });
+      return chain;
     };
 
     var fillMovie = function(movie){
       if(movie.id) {
-        tmdbService.getMovie(movie.id).then(function(details){
-          angular.extend(movie,details);
-        });
-        tmdbService.getCredits(movie.id).then(function(credits){
-          angular.extend(movie,credits);
-          var foundDirectors = $filter('filter')(credits.crew || [], { job: 'Director'}, true);
-          if(foundDirectors.length) {
-            movie.director = foundDirectors[0].name;
-          }
-          var foundWriters = $filter('filter')(credits.crew || [], { job: 'Writer'}, true);
-          if(foundWriters.length) {
-            angular.forEach(foundWriters,function(writer){
-              if(!movie.writers) {
-                movie.writers = writer.name;
-              } else {
-                movie.writers += ', '+writer.name;
-              }
-            });
-          }
-          if(credits.cast && credits.cast.length) {
-            movie.stars = credits.cast[0].name;
-            for (var i = 1; i < 3; i++) {
-              if(credits.cast[i]) {
-                movie.stars += ', '+credits.cast[i].name;
+        return $q.all([
+          tmdbService.getMovie(movie.id).then(function(details){
+            angular.extend(movie,details);
+          }),
+          tmdbService.getCredits(movie.id).then(function(credits){
+            angular.extend(movie,credits);
+            var foundDirectors = $filter('filter')(credits.crew || [], { job: 'Director'}, true);
+            if(foundDirectors.length) {
+              movie.director = foundDirectors[0].name;
+            }
+            var foundWriters = $filter('filter')(credits.crew || [], { job: 'Writer'}, true);
+            if(foundWriters.length) {
+              angular.forEach(foundWriters,function(writer){
+                if(!movie.writers) {
+                  movie.writers = writer.name;
+                } else {
+                  movie.writers += ', '+writer.name;
+                }
+              });
+            }
+            if(credits.cast && credits.cast.length) {
+              movie.stars = credits.cast[0].name;
+              for (var i = 1; i < 3; i++) {
+                if(credits.cast[i]) {
+                  movie.stars += ', '+credits.cast[i].name;
+                }
               }
             }
-          }
-        });
+          })
+        ]);
       }
     };
 
