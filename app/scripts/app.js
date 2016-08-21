@@ -14,10 +14,10 @@ angular.module('elementumMoviesApp', [
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+      .when('/collection/:id', {
+        templateUrl: 'views/collection.html',
+        controller: 'CollectionCtrl',
+        controllerAs: 'collection'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -25,6 +25,6 @@ angular.module('elementumMoviesApp', [
         controllerAs: 'about'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/collection/528'
       });
   });

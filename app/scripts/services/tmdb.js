@@ -18,7 +18,7 @@ angular.module('elementumMoviesApp').service('tmdbService', ['$http', function (
 
   this.getCollection = function(id) {
     return apiGet('collection/'+id).then(function(collection){
-      if(collection.data && collection.data.id === id) {
+      if(collection.data && collection.data.id == id) {
         return collection.data;
       }
     });
@@ -26,7 +26,7 @@ angular.module('elementumMoviesApp').service('tmdbService', ['$http', function (
 
   this.getMovie = function(id) {
     return apiGet('movie/'+id).then(function(movie){
-      if(movie.data && movie.data.id === id) {
+      if(movie.data && movie.data.id == id) {
         return movie.data;
       }
     });
@@ -34,7 +34,7 @@ angular.module('elementumMoviesApp').service('tmdbService', ['$http', function (
 
   this.getCredits = function(id) {
     return apiGet('movie/'+id+'/credits').then(function(movie){
-      if(movie.data && movie.data.id === id) {
+      if(movie.data && movie.data.id == id) {
         return movie.data;
       }
     });

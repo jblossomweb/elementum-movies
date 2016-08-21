@@ -2,16 +2,17 @@
 
 /**
  * @ngdoc function
- * @name elementumMoviesApp.controller:MainCtrl
+ * @name elementumMoviesApp.controller:CollectionCtrl
  * @description
- * # MainCtrl
+ * # CollectionCtrl
  * Controller of the elementumMoviesApp
  */
-angular.module('elementumMoviesApp').controller('MainCtrl', [
+angular.module('elementumMoviesApp').controller('CollectionCtrl', [
   '$scope',
   '$filter',
+  '$routeParams',
   'tmdbService',
-  function ($scope, $filter, tmdbService) {
+  function ($scope, $filter, $routeParams, tmdbService) {
 
     $scope.imgBase = 'https://image.tmdb.org/t/p/w150_and_h225_bestv2/';
     $scope.imgLargeBase = 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/';
@@ -86,8 +87,7 @@ angular.module('elementumMoviesApp').controller('MainCtrl', [
         fillMovies();
       });
     };
-    
-    $scope.getCollection(528);
+    $scope.getCollection($routeParams.id);
 
     
 }]);
