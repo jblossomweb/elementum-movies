@@ -7,16 +7,47 @@
  * # tmdbService
  * Service of the elementumMoviesApp
  */
-angular.module('elementumMoviesApp').service('tmdbService', ['$http', function ($http) {
-
+angular.module('elementumMoviesApp').service('tmdbService', [
+  '$http', 
+  '$timeout',
+  '$q',
+  function ($http, $timeout, $q) {
   var apiBase = 'https://api.themoviedb.org/3/';
   var apiKey = 'da811d0ef4d0b95aaf27b22623b94a38';
 
+  var requestLimit = 10;
+  var urlRequests = {};
+
   var apiGet = function(endpoint, querystring) {
+    var url;
     if(querystring) {
-      return $http.get(apiBase+endpoint+'?'+querystring+'&api_key='+apiKey);
+      url = apiBase+endpoint+'?'+querystring+'&api_key='+apiKey;
+    } else {
+      url = apiBase+endpoint+'?api_key='+apiKey;
     }
-    return $http.get(apiBase+endpoint+'?api_key='+apiKey);
+
+    // return $http.get(url);
+
+    return $q(function(resolve, reject) {
+      $http.get(url).then(function(result) {
+        urlRequests[url] = 0;
+        resolve(result);
+      }, function(error) {
+        if(Number(error.status) === 429) { // too many requests
+          $timeout(function() {
+            urlRequests[url] = urlRequests[url] || 0;
+            urlRequests[url]++;
+            if(urlRequests[url] <= requestLimit) {
+              apiGet(endpoint, querystring).then(function(result) {
+                resolve(result);
+              });
+            } else {
+              reject(error);
+            }
+          }, 7000); // result.headers('Retry-After') was unavailable
+        }
+      });
+    });
   };
 
   this.getGenres = function() {
@@ -46,7 +77,7 @@ angular.module('elementumMoviesApp').service('tmdbService', ['$http', function (
 
   this.getList = function(id) {
     return apiGet('list/'+id).then(function(result){
-      if(result.data && Number(result.data.id) === Number(id)) {
+      if(result.data && String(result.data.id) === String(id)) {
         return result.data;
       }
     });

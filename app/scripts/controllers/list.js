@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name elementumMoviesApp.controller:CollectionCtrl
+ * @name elementumMoviesApp.controller:ListCtrl
  * @description
- * # CollectionCtrl
+ * # ListCtrl
  * Controller of the elementumMoviesApp
  */
-angular.module('elementumMoviesApp').controller('CollectionCtrl', [
+angular.module('elementumMoviesApp').controller('ListCtrl', [
   '$scope',
   '$routeParams',
   'movieFactory',
@@ -19,8 +19,8 @@ angular.module('elementumMoviesApp').controller('CollectionCtrl', [
     $scope.imgBase = movieFactory.imgBase;
     $scope.imgLargeBase = movieFactory.imgLargeBase;
     movieFactory.scopeMethods($scope, [
-      'selectMovie', 'selectActor', 'getCollection'
+      'selectMovie', 'selectActor', 'getList'
     ]);
     
-    $scope.getCollection($routeParams.id);
+    $scope.getList($routeParams.id);
 }]);

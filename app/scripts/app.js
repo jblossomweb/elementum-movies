@@ -19,10 +19,10 @@ angular.module('elementumMoviesApp', [
         controller: 'CollectionCtrl',
         controllerAs: 'collection'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/list/:id', {
+        templateUrl: 'views/collection.html',
+        controller: 'ListCtrl',
+        controllerAs: 'list'
       })
       .otherwise({
         redirectTo: '/collection/528'

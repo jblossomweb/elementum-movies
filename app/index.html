@@ -42,18 +42,18 @@
             </a>
           </div>
 
-<!--           <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-class="!navCollapsed && 'in'">
+          <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-class="!navCollapsed && 'in'">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li class="active"><a href="#/collection/528">Terminators</a></li>
+              <li><a ng-href="#/collection/8537">Supermans</a></li>
+              <li><a ng-href="#/list/509ec17b19c2950a0600050d">Best Picture Winners</a></li>
             </ul>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="">
       <div ng-view=""></div>
     </div>
 
@@ -69,10 +69,11 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services/tmdb.js"></script>
+    <script src="scripts/factories/movie.js"></script>
     <script src="scripts/directives/fadeLoad.js"></script>
     <script src="scripts/controllers/menu.js"></script>
     <script src="scripts/controllers/collection.js"></script>
-    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/list.js"></script>
     <!-- endbuild -->
 </body>
 </html>
