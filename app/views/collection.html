@@ -1,10 +1,10 @@
 <div class="row">
 
-  <div class="col-xs-4 left-col">
+  <div class="col-md-4 col-xs-12 left-col" ng-class="{ hideleft: movie}">
     <h1>Browse Movies</h1>
 
     <div class="row">
-      <div class="col-xs-6 movie-thumb text-center" 
+      <div class="col-lg-6 col-md-12 col-sm-3 col-xs-4 movie-thumb text-center" 
         ng-repeat="movie in movies | orderBy : 'release_date'" 
         ng-click="selectMovie(movie.id)" 
         ng-class="movie.selected ? 'selected' : ''"
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div class="col-xs-8 right-col">
+  <sticky-scroll class="col-md-8 col-xs-12 right-col">
     <div class="movie-details" ng-if="movie">
       
       <h1 ng-bind="movie.title"></h1>
@@ -32,15 +32,15 @@
         <div class="col-xs-9">
           <h2>Who made it?</h2>
           <p>
-            <div ng-if="movie.director.length">
-              <b>Director:</b>&nbsp;{{movie.director}}
-            </div>
-            <div ng-if="movie.writers.length">
-              <b>Writers:</b>&nbsp;{{movie.writers}}
-            </div>
-            <div ng-if="movie.stars.length">
-              <b>Stars:</b>&nbsp;{{movie.stars}}
-            </div>
+            <span ng-if="movie.director.length">
+              <b>Director:</b>&nbsp;{{movie.director}}<br>
+            </span>
+            <span ng-if="movie.writers.length">
+              <b>Writers:</b>&nbsp;{{movie.writers}}<br>
+            </span>
+            <span ng-if="movie.stars.length">
+              <b>Stars:</b>&nbsp;{{movie.stars}}<br>
+            </span>
           </p>
           <br>
           <h2>What's it about?</h2>
@@ -53,7 +53,7 @@
       <h1>Movie Credits</h1>
 
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-6 col-xs-8">
           <div class="actor-thumb text-left" 
             ng-repeat="actor in movie.cast"
             ng-click="selectActor(actor.id)"
@@ -68,8 +68,10 @@
             </div>
           </div> 
         </div>
-        <div class="col-xs-6">
-          <img fade-load ng-src="{{imgLargeBase}}{{actor.profile_path}}" ng-if="actor && actor.profile_path" />
+        <div class="col-md-6 col-xs-4 actor-fullshot">
+          <div sticky>
+            <img fade-load ng-src="{{imgLargeBase}}{{actor.profile_path}}" ng-if="actor && actor.profile_path" />
+          </div>
         </div>
       </div>
 

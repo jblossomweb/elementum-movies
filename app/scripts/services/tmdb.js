@@ -50,18 +50,9 @@ angular.module('elementumMoviesApp').service('tmdbService', [
     });
   };
 
-  this.getGenres = function() {
-    return apiGet('genre/movie/list/').then(function(result){
+  this.getNowPlaying = function() {
+    return apiGet('movie/now_playing').then(function(result){
       if(result.data) {
-        return result.data;
-      }
-    });
-  };
-
-  this.getGenrePage = function(id, page) {
-    page = page ? page : 1;
-    return apiGet('genre/'+id+'/movies','page='+page).then(function(result){
-      if(result.data && Number(result.data.id) === Number(id)) {
         return result.data;
       }
     });

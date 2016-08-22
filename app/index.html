@@ -44,9 +44,29 @@
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-class="!navCollapsed && 'in'">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/collection/528">Terminators</a></li>
-              <li><a ng-href="#/collection/8537">Supermans</a></li>
-              <li><a ng-href="#/list/509ec17b19c2950a0600050d">Best Picture Winners</a></li>
+
+              <li><a ng-href="#/now-playing">Now Playing</a></li>
+
+              <li uib-dropdown>
+                <a uib-dropdown-toggle>Collections <span class="caret"></span></a>
+                <ul uib-dropdown-menu>
+                  <li><a href="#/collection/528">Terminator</a></li>
+                  <li><a href="#/collection/2980">Ghostbusters</a></li>
+                  <li><a href="#/collection/328">Jurassic Park</a></li>
+                  <li><a href="#/collection/10">Star Wars</a></li>
+                  <li><a href="#/collection/84">Indiana Jones</a></li>
+                  <li><a ng-href="#/collection/8537">Superman</a></li>
+                  <li><a ng-href="#/collection/264">Back to the Future</a></li>
+                </ul>
+              </li>
+
+              <li uib-dropdown>
+                <a uib-dropdown-toggle>Lists <span class="caret"></span></a>
+                <ul uib-dropdown-menu>
+                  <li><a ng-href="#/list/509ec17b19c2950a0600050d">Best Picture Winners</a></li>
+                </ul>
+              </li>
+
             </ul>
           </div>
         </div>
@@ -63,6 +83,8 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/matchmedia/matchMedia.js"></script>
+    <script src="bower_components/ngSticky/lib/sticky.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -74,6 +96,8 @@
     <script src="scripts/controllers/menu.js"></script>
     <script src="scripts/controllers/collection.js"></script>
     <script src="scripts/controllers/list.js"></script>
+
+    <script src="scripts/controllers/nowPlaying.js"></script>
     <!-- endbuild -->
 </body>
 </html>

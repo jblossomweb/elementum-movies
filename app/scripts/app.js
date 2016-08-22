@@ -10,7 +10,8 @@
  */
 angular.module('elementumMoviesApp', [
     'ngRoute',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'sticky'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -23,6 +24,11 @@ angular.module('elementumMoviesApp', [
         templateUrl: 'views/collection.html',
         controller: 'ListCtrl',
         controllerAs: 'list'
+      })
+      .when('/now-playing', {
+        templateUrl: 'views/collection.html',
+        controller: 'NowPlayingCtrl',
+        controllerAs: 'now-playing'
       })
       .otherwise({
         redirectTo: '/collection/528'

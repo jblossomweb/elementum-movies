@@ -8,14 +8,13 @@
 body {
   padding: 0;
   font-family: Helvetica, sans-serif;
-  height:100vh;
-  overflow:hidden;
 }
 
 
 .navbar-default {
   background-color: #111;
   font-family: 'Montserrat', Helvetica, sans-serif;
+  z-index: 10;
 }
 
 .navbar-default a {
@@ -32,7 +31,7 @@ div.navbar-collapse.collapse {
   transition: max-height .3s ease;
 }
 div.navbar-collapse.collapse.in {
-  max-height: 2000px;
+  max-height: 200px;
 }
 
 /* Annotations */
@@ -79,13 +78,6 @@ p {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f6f6', endColorstr='#cbcbcb', GradientType=1 );
 }
 
-.left-col,
-.right-col {
-  padding:24px 64px 50px 64px;
-  height:100vh;
-  overflow-y:auto;
-}
-
 .fade-container {
   opacity:0;
   -webkit-transition: opacity 0.5s ease-in;
@@ -101,6 +93,7 @@ p {
 
 .movie-thumb {
   margin: 20px 0px;
+  height:200px;
   cursor: pointer;
 }
 
@@ -145,7 +138,7 @@ p {
 .actor-thumb {
   margin: 10px 0px;
   cursor: pointer;
-  height:80px;
+  height:90px;
 }
 
 .actor-thumb.selected h2,
@@ -187,6 +180,81 @@ p {
   margin:0px;
 }
 
+.actor-fullshot img {
+  max-width:100%;
+}
+
 .footer {
   color:#ccc;
+}
+
+@media only screen and (max-width : 991px) {
+  body {
+    height:100vh;
+    overflow:hidden;
+  }
+  .left-col,
+  .right-col {
+    padding:12px 64px 50px 12px;
+    width:100vw;
+    height:100vh;
+    overflow-y:auto;
+    margin-top:0px;
+    -webkit-transition: margin-top .75s cubic-bezier(0.86, 0, 0.07, 1);
+    -moz-transition: margin-top .75s cubic-bezier(0.86, 0, 0.07, 1);
+    -o-transition: margin-top .75s cubic-bezier(0.86, 0, 0.07, 1);
+    -ms-transition: margin-top .75s cubic-bezier(0.86, 0, 0.07, 1);
+    transition: margin-top .75s cubic-bezier(0.86, 0, 0.07, 1);
+    -webkit-transition-delay: .25s;
+    transition-delay: .25s;
+  }
+
+  .left-col.hideleft {
+    margin-top:-200%;
+  }
+
+  .actor-thumb .text {
+    max-width: 70%;
+  }
+}
+
+@media only screen and (max-width : 479px) {
+  h1 {
+    font-size:18px;
+  }
+  h2 {
+    font-size:12px;
+  }
+  p, p div {
+    font-size:10px;
+    line-height:12px;
+  }
+  .actor-thumb .text {
+    max-width: 50%;
+  }
+  .movie-thumb .circle-container {
+    margin: -7px auto;
+    height: 80px;
+    width: 80px;
+  }
+  .left-col.hideleft {
+    margin-top:-250%;
+  }
+}
+
+
+@media only screen and (min-width : 992px) {
+  body {
+    height:100vh;
+    overflow:hidden;
+  }
+  .left-col,
+  .right-col {
+    padding:24px 64px 50px 64px;
+    height:100vh;
+    overflow-y:auto;
+  }
+  .actor-thumb .text {
+    max-width: 70%;
+  }
 }

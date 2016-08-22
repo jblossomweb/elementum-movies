@@ -110,6 +110,15 @@ angular.module('elementumMoviesApp').factory('movieFactory', [
       };
     };
 
+    Factory.getNowPlaying = function($scope) {
+      return function() {
+        tmdbService.getNowPlaying().then(function(list){
+          $scope.movies = list.results || [];
+          fillMovies($scope);
+        });
+      };
+    };
+
     Factory.scopeMethods = function($scope, methods) {
       angular.forEach(methods, function(method) {
         $scope[method] = Factory[method]($scope);
