@@ -10,3 +10,7 @@ Run `grunt` for building and `grunt serve` for preview.
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
+
+## Demo
+
+Demo: [click here](http://elementum-movies-dist.s3-website-us-west-1.amazonaws.com/)
